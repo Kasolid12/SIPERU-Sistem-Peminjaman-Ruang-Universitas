@@ -26,3 +26,9 @@ server/prisma/dev.db
 
 # Internal project plan (not part of deliverable)
 rencana-proyek-siperu.md
+
+# Freebuff / AI agent workspace
+.freebuff/
+
+# AI skills / agent references (not part of source code)
+server/.agents/
