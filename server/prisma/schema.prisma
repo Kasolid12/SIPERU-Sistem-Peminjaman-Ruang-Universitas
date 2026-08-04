@@ -1,0 +1,68 @@
+// Prisma schema SIPERU — Sistem Peminjaman Ruang Universitas
+// Provider: mysql (MariaDB via XAMPP lokal)
+// Generator prisma-client (Prisma 7) — output ke ../generated/prisma
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+enum Role {
+  ADMIN
+  DOSEN
+}
+
+enum StatusBooking {
+  MENUNGGU
+  DISETUJUI
+  DITOLAK
+  SELESAI
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  nama      String
+  email     String   @unique
+  password  String
+  role      Role     @default(DOSEN)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  bookings Booking[]
+}
+
+model Room {
+  id         Int      @id @default(autoincrement())
+  nama       String
+  lokasi     String
+  kapasitas  Int
+  // id ruang dari webservice eksternal (api-ruangan.vercel.app), null untuk ruang lokal
+  externalId String?  @unique
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  bookings Booking[]
+}
+
+model Booking {
+  id        Int           @id @default(autoincrement())
+  roomId    Int
+  userId    Int
+  tanggal   DateTime // tanggal pemakaian (dianggap tanggal lokal, komparasi via bagian date)
+  jamMulai  String // format "HH:MM" 24 jam
+  jamSelesai String // format "HH:MM" 24 jam, harus > jamMulai
+  keperluan String
+  status    StatusBooking @default(MENUNGGU)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  room Room @relation(fields: [roomId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([roomId, tanggal])
+  @@index([userId])
+}
