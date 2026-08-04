@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Tema SIPERU — "Soft & Professional"
+   Warna dasar: #F7F8FA (off-white kebiruan)
+   Primary: #3B4A6B (slate blue tua)
+   Font: Plus Jakarta Sans (body), Lora (heading dashboard)
+   ============================================================ */
+
+@theme {
+  --color-primary: #3B4A6B;
+  --color-primary-light: #4A5A7E;
+  --color-primary-dark: #2C3A55;
+
+  --color-surface: #F7F8FA;
+  --color-surface-card: #FFFFFF;
+  --color-border: #E2E5EA;
+
+  --color-text-primary: #1F2937;
+  --color-text-secondary: #6B7280;
+  --color-text-muted: #9CA3AF;
+
+  /* Status colors */
+  --color-status-menunggu: #C08A3E;
+  --color-status-disetujui: #5F8D6B;
+  --color-status-ditolak: #B4574F;
+  --color-status-selesai: #6B7280;
+
+  --color-status-menunggu-bg: #FEF3E2;
+  --color-status-disetujui-bg: #EAF4ED;
+  --color-status-ditolak-bg: #F8EDEC;
+  --color-status-selesai-bg: #F0F1F3;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.06);
+  --shadow-card-hover: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  --shadow-dropdown: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.04);
+}
+
+body {
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Font imports */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 400 700;
+  src: url(https://fonts.gstatic.com/s/plusjakartasans/v8/LDIoaolQ3A1M0DbjA9FT0-HA68MdL5xN5A.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
+}
+
+/* Transition utilities */
+.transition-fast {
+  transition: all 150ms ease;
+}
+
+.transition-normal {
+  transition: all 200ms ease;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #D1D5DB;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9CA3AF;
+}
