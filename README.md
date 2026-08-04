@@ -154,6 +154,7 @@ cp .env.example .env
 # Edit .env sesuai konfigurasi database Anda
 npm install
 npx prisma db push
+npx prisma generate
 npx prisma db seed
 ```
 
