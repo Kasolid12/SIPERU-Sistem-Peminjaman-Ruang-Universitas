@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useAuth } from '../../store/AuthContext';
 import { NavLink, useNavigate } from 'react-router-dom';
 
@@ -17,7 +16,6 @@ const dosenNav = [
 export function Sidebar() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
-  const [collapsed, setCollapsed] = useState(false);
   const navItems = user?.role === 'ADMIN' ? adminNav : dosenNav;
 
   const handleLogout = () => {
@@ -27,18 +25,16 @@ export function Sidebar() {
 
   return (
     <aside
-      className={`bg-white border-r border-border transition-all duration-200 flex flex-col ${collapsed ? 'w-16' : 'w-60'}`}
+      className="bg-white border-r border-border transition-all duration-200 flex flex-col w-60"
     >
       {/* Logo */}
       <div className="h-16 flex items-center gap-3 px-4 border-b border-border">
         <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white text-sm font-bold shrink-0">
           S
         </div>
-        {!collapsed && (
-          <span className="font-semibold text-sm text-text-primary whitespace-nowrap">
-            SIPERU
-          </span>
-        )}
+        <span className="font-semibold text-sm text-text-primary whitespace-nowrap">
+          SIPERU
+        </span>
       </div>
 
       {/* Nav */}
@@ -57,7 +53,7 @@ export function Sidebar() {
             }
           >
             <span className="text-lg shrink-0">{item.icon}</span>
-            {!collapsed && <span>{item.label}</span>}
+            <span>{item.label}</span>
           </NavLink>
         ))}
       </nav>
@@ -68,19 +64,17 @@ export function Sidebar() {
           <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary text-xs font-bold shrink-0">
             {user?.nama.charAt(0)}
           </div>
-          {!collapsed && (
-            <div className="flex-1 min-w-0">
+          <div className="flex-1 min-w-0">
               <p className="text-sm font-medium text-text-primary truncate">{user?.nama}</p>
               <p className="text-xs text-text-muted">{user?.role}</p>
-            </div>
-          )}
+          </div>
         </div>
         <button
           onClick={handleLogout}
           className="mt-2 w-full flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-text-muted hover:text-ditolak hover:bg-ditolak-bg transition-all cursor-pointer"
         >
           <span className="text-lg">🚪</span>
-          {!collapsed && <span>Logout</span>}
+          <span>Logout</span>
         </button>
       </div>
     </aside>

@@ -3,7 +3,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { bookingService } from '../../services/bookings';
 import { roomService } from '../../services/rooms';
-import { StatusBadge, LoadingPage } from '../../components/shared';
+import { LoadingPage } from '../../components/shared';
 import type { BookingCreateInput } from '../../types';
 
 export function DosenNewBookingPage() {

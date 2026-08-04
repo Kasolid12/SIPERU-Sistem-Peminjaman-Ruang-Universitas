@@ -2,7 +2,6 @@ import { useQuery } from '@tanstack/react-query';
 import { dashboardService } from '../../services/dashboard';
 import { LoadingPage } from '../../components/shared';
 import { StatusBadge } from '../../components/shared';
-import { STATUS_LABELS } from '../../types';
 import type { StatusBooking } from '../../types';
 
 const statusList: StatusBooking[] = ['MENUNGGU', 'DISETUJUI', 'DITOLAK', 'SELESAI'];
